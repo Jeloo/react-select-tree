@@ -196,7 +196,7 @@ const itemShape = {
 };
 
 MultistepSelect.propTypes = {
-  selection: PropTypes.arrayOf(PropTypes.number),
+  selection: PropTypes.arrayOf(PropTypes.number).isRequired,
   buttonPosition: PropTypes.oneOf(['top', 'bottom']),
   data: PropTypes.arrayOf(PropTypes.shape(itemShape)),
   maxCount: PropTypes.number,
