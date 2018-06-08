@@ -16,7 +16,7 @@ class MultipleSelectedListNested extends Component {
   }
 
   render() {
-    const items = this.props.nestedUtils.findByIds(this.props.selection);
+    const items = this.props.selection;
 
     const list = items.map(item => {
       return (

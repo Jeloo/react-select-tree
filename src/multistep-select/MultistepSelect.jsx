@@ -9,13 +9,13 @@ import MultipleSelectedList from "./MultipleSelectedList";
 // * Refactor from className to classnames - DONE
 // * Use styled components
 // * Get rid of intl - DONE
-// * Get rid of function declarations in the render methods
+// * Get rid of function declarations in the render methods - DONE
 // * Make the example working - DONE
 // * Tests at least for nested utils
 // * Reformat - DONE
 
 /**
- * @property {Array }           data                   The data containing hierarchy of strings to find
+ * @property {Array}            data                   The data containing hierarchy of strings to find
  * @property {Array}            selection              Ids of the (initially) selected data
  *                                                     Hint system will try to find object properties according
  *                                                     to specified entry keys.
@@ -78,11 +78,9 @@ export class MultistepSelect extends Component {
   }
 
   renderSelects() {
-    if (this.isMaxCount()) {
+    if (this.isLimitReached()) {
       return null;
     }
-
-    let error = this.props.meta.touched && this.props.meta.error;
 
     return (
       <InputGroup
@@ -90,11 +88,11 @@ export class MultistepSelect extends Component {
         currentItemId={this.state.currentItemId}
         onSelect={this.onSelect.bind(this)}
         onRemove={this.onRemove.bind(this)}
-        error={error}
         placeholder={this.props.placeholder}
         creatable={this.props.creatable}
         maxCreatableLength={this.props.maxCreatableLength}
         selectionDisabled={this.state.selectionDisabled}
+        selectClassNames={this.props.classNamesConfig.select}
       />
     );
   }
@@ -118,7 +116,6 @@ export class MultistepSelect extends Component {
     let selectedItem, itemHasChildren;
 
     if (!item.custom) {
-      //@TODO Refactor. [item] contains item id in this case / branch.
       selectedItem = this.nestedUtils.findItemById(item);
       itemHasChildren = this.nestedUtils.hasChildren(item);
     } else {
@@ -163,26 +160,19 @@ export class MultistepSelect extends Component {
     );
   }
 
-  componentDidUpdate() {
-    const {
-      maxCount,
-      input: { value }
-    } = this.props;
+  // componentDidUpdate() {
+  //   if (this.isLimitReached()) {
+  //     this.props.input.onChange(
+  //       this.props.selection.slice(0, this.props.maxCount)
+  //     );
+  //   }
+  // }
 
-    if (this.isMaxCount() && maxCount < value.length) {
-      this.props.input.onChange(
-        this.props.selection.slice(0, this.props.maxCount)
-      );
-    }
-  }
-
-  isMaxCount() {
-    const {
-      maxCount,
-      input: { value }
-    } = this.props;
-
-    return !!(maxCount && Array.isArray(value) && maxCount <= value.length);
+  isLimitReached() {
+    return (
+      this.props.maxCount > 0 &&
+      this.props.selection.length >= this.props.maxCount
+    );
   }
 }
 
@@ -210,7 +200,20 @@ MultistepSelect.propTypes = {
   onSelect: PropTypes.func,
   confirmBtnRootMsg: PropTypes.string,
   confirmBtnSubMsg: PropTypes.string,
-  deleteButtonText: PropTypes.string
+  deleteButtonText: PropTypes.string,
+  classNamesConfig: PropTypes.object
+};
+
+MultistepSelect.defaultProps = {
+  classNamesConfig: {
+    select: [],
+    selectContainer: [],
+    buttonsContainer: [],
+    confirmBtn: [],
+    resetBtn: [],
+    selectedItem: []
+  },
+  maxCount: 0
 };
 
 export default MultistepSelect;

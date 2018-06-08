@@ -119,7 +119,12 @@ export class InputGroup extends Component {
     return (
       <div key={item.id}>
         <Select
-          className={classNames("select-success", "select-no-x", "clickable")}
+          className={classNames([
+            "select-success",
+            "select-no-x",
+            "clickable",
+            ...this.props.selectClassNames
+          ])}
           value={item.id}
           options={this.getOptions(this.nestedUtils.getRootItems())}
           placeholder={this.placeholder}

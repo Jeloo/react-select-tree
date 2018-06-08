@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import "./multistep-select/MultistepSelect";
+import MultipleSelectedListNested from "./multistep-select/MultipleSelectedListNested";
 import dummyData from "./data.json";
-
 import MultistepSelect from "./multistep-select/MultistepSelect";
 
 class App extends Component {
@@ -19,8 +18,8 @@ class App extends Component {
     this.setState({ selection: [...this.state.selection, ...[itemId]] });
   }
 
-  removeItem(item) {
-    const index = this.state.selection.indexOf(item.id);
+  removeItem(itemId) {
+    const index = this.state.selection.indexOf(itemId);
 
     if (index > -1) {
       const selection = [...this.state.selection];
@@ -51,7 +50,17 @@ class App extends Component {
           selection={this.state.selection}
           onConfirm={this.addItem.bind(this)}
           onRemove={this.removeItem.bind(this)}
+          selectedListComponent={MultipleSelectedListNested}
+          classNamesConfig={{
+            select: ["dropdown"]
+          }}
+          maxCount={3}
         />
+
+        <p>
+          You can pass the specific component to customize rendering of selected
+          items:
+        </p>
       </div>
     );
   }
