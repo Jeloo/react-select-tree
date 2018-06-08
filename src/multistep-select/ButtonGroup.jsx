@@ -1,27 +1,31 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class ButtonGroup extends Component {
-
   renderConfirmButton() {
-    const {readyToConfirm, confirmText = 'Add'} = this.props;
+    const { readyToConfirm, confirmText = "Add" } = this.props;
 
     if (!readyToConfirm) {
       return null;
     }
 
     return (
-      <input type="button"
-             className="btn btn-primary clickable"
-             value={confirmText}
-             onClick={this.props.onConfirm}/>
+      <input
+        type="button"
+        className="btn btn-primary clickable"
+        value={confirmText}
+        onClick={this.props.onConfirm}
+      />
     );
   }
 
   renderResetButton() {
     if (this.props.readyToConfirm) {
       return (
-        <button className="btn btn-danger clickable ml-1" onClick={this.props.onReset}>
+        <button
+          className="btn btn-danger clickable ml-1"
+          onClick={this.props.onReset}
+        >
           Reset
         </button>
       );
@@ -36,7 +40,7 @@ class ButtonGroup extends Component {
           {this.renderResetButton()}
         </div>
       </div>
-    )
+    );
   }
 }
 
@@ -46,7 +50,7 @@ ButtonGroup.propTypes = {
   selectedItemName: PropTypes.string,
   itemHasChildren: PropTypes.bool,
   readyToConfirm: PropTypes.bool,
-  confirmText: PropTypes.string,
+  confirmText: PropTypes.string
 };
 
 export default ButtonGroup;
