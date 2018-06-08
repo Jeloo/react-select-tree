@@ -10,7 +10,7 @@ import MultipleSelectedList from "./MultipleSelectedList";
 // * Use styled components
 // * Get rid of intl - DONE
 // * Get rid of function declarations in the render methods
-// * Make the example working
+// * Make the example working - DONE
 // * Tests at least for nested utils
 // * Reformat - DONE
 
@@ -30,7 +30,6 @@ export class MultistepSelect extends Component {
 
   componentWillReceiveProps(nextProps) {
     // set data to utility when the component data prop is updated
-    //@TODO check if the data changed
     this.nestedUtils.data = nextProps.data;
   }
 

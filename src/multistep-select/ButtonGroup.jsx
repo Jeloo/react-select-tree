@@ -10,35 +10,21 @@ class ButtonGroup extends Component {
     }
 
     return (
-      <input
-        type="button"
-        className="btn btn-primary clickable"
-        value={confirmText}
-        onClick={this.props.onConfirm}
-      />
+      <input type="button" value={confirmText} onClick={this.props.onConfirm} />
     );
   }
 
   renderResetButton() {
     if (this.props.readyToConfirm) {
-      return (
-        <button
-          className="btn btn-danger clickable ml-1"
-          onClick={this.props.onReset}
-        >
-          Reset
-        </button>
-      );
+      return <button onClick={this.props.onReset}>Reset</button>;
     }
   }
 
   render() {
     return (
-      <div className="row pt-3">
-        <div className="col line">
-          {this.renderConfirmButton()}
-          {this.renderResetButton()}
-        </div>
+      <div>
+        {this.renderConfirmButton()}
+        {this.renderResetButton()}
       </div>
     );
   }

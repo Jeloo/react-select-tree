@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "parentId": 0,
+    "children": [2, 3, 4, 5, 6, 7],
+    "name": "Transport"
+  },
+  { "id": 2, "parentId": 1, "children": [9, 10, 11, 12], "name": "Cars" },
+  { "id": 3, "parentId": 1, "children": [13, 14, 15], "name": "Moto" },
+  { "id": 4, "parentId": 1, "children": [], "name": "Trucks" },
+  { "id": 5, "parentId": 1, "children": [], "name": "Buses" },
+  { "id": 6, "parentId": 1, "children": [], "name": "Water transport" },
+  { "id": 8, "parentId": 1, "children": [], "name": "Other transport" },
+  { "id": 9, "parentId": 2, "children": [], "name": "Sports cars" },
+  { "id": 10, "parentId": 2, "children": [], "name": "Coupe" },
+  { "id": 11, "parentId": 2, "children": [], "name": "Sedan" },
+  { "id": 12, "parentId": 2, "children": [], "name": "Deisel" },
+  { "id": 13, "parentId": 3, "children": [], "name": "Classic" },
+  { "id": 14, "parentId": 3, "children": [], "name": "Sport bikes" },
+  { "id": 15, "parentId": 3, "children": [], "name": "Choppers" },
+
+  {
+    "id": 16,
+    "parentId": 0,
+    "children": [9, 10, 11, 12, 13],
+    "name": "Electronics"
+  },
+  {
+    "id": 17,
+    "parentId": 8,
+    "children": [10, 11, 12, 13],
+    "name": "Photo / video"
+  },
+  { "id": 18, "parentId": 16, "children": [], "name": "Games / consoles" },
+  { "id": 19, "parentId": 16, "children": [], "name": "Phones & accesories" },
+  { "id": 20, "parentId": 16, "children": [], "name": "Laptops & accessories" },
+  { "id": 21, "parentId": 16, "children": [], "name": "TV / Video" },
+
+  { "id": 22, "parentId": 0, "children": [23, 27], "name": "Jobs" },
+  {
+    "id": 23,
+    "parentId": 22,
+    "children": [24, 25, 26],
+    "name": "Development / Programming"
+  },
+  { "id": 24, "parentId": 23, "children": [], "name": "Front-end developers" },
+  { "id": 25, "parentId": 23, "children": [], "name": "C# developers" },
+  { "id": 26, "parentId": 23, "children": [], "name": "DevOps" },
+
+  {
+    "id": 27,
+    "parentId": 22,
+    "children": [28, 29],
+    "name": "HR / HR management"
+  },
+  { "id": 28, "parentId": 27, "children": [], "name": "Recruiters" },
+  { "id": 29, "parentId": 27, "children": [], "name": "HR managers" }
+]

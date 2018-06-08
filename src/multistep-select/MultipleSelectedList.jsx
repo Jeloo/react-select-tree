@@ -21,7 +21,6 @@ class MultipleSelectedList extends Component {
               className="Select-value-label"
               role="option"
               aria-selected="true"
-              id="react-select-3--value-1"
             >
               {item.name}
               <span className="Select-aria-only">&nbsp;</span>

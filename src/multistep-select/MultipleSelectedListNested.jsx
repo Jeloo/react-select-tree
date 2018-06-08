@@ -20,7 +20,7 @@ class MultipleSelectedListNested extends Component {
           <div className="Select-value">
             <span
               className="Select-value-icon"
-              aria-hidden="true"
+              aria-hidden
               onClick={() => this.props.onRemove(item.id)}
             >
               ×
@@ -28,7 +28,7 @@ class MultipleSelectedListNested extends Component {
             <span
               className="Select-value-label"
               role="option"
-              aria-selected="true"
+              aria-selected
               id="react-select-3--value-1"
             >
               {this.generateItemName(item)}

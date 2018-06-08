@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import "./multistep-select/MultistepSelect";
+import dummyData from "./data.json";
 
 import MultistepSelect from "./multistep-select/MultistepSelect";
 
@@ -10,24 +11,7 @@ class App extends Component {
     super(props);
     // some dummy data for testing purposes
     this.state = {
-      data: [
-        { id: 1, parentId: 0, children: [2, 3, 4], name: "Transport" },
-        { id: 2, parentId: 1, children: [], name: "Cars" },
-        { id: 3, parentId: 1, children: [], name: "Moto" },
-        { id: 4, parentId: 1, children: [], name: "Trucks" },
-        { id: 5, parentId: 1, children: [], name: "Buses" },
-        { id: 6, parentId: 1, children: [], name: "Water transport" },
-        { id: 7, parentId: 1, children: [], name: "Other transport" },
-
-        { id: 8, parentId: 0, children: [], name: "Electronics" },
-        { id: 9, parentId: 8, children: [], name: "Electronics" },
-        { id: 10, parentId: 8, children: [], name: "Electronics" },
-        { id: 11, parentId: 8, children: [], name: "Electronics" },
-        { id: 12, parentId: 8, children: [], name: "Electronics" },
-        { id: 13, parentId: 8, children: [], name: "Electronics" },
-
-        { id: 14, parentId: 0, children: [], name: "Jobs" }
-      ],
+      data: dummyData,
       selection: [1]
     };
   }
@@ -69,8 +53,6 @@ class App extends Component {
           onConfirm={this.addItem.bind(this)}
           onRemove={this.removeItem.bind(this)}
         />
-
-        {this.state.error}
       </div>
     );
   }

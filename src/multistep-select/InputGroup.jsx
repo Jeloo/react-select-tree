@@ -103,9 +103,8 @@ export class InputGroup extends Component {
       const options = this.getOptions(data);
 
       return (
-        <div className="col-xs-12 col-sm mb-2" key={item.id}>
+        <div key={item.id}>
           <Select
-            className="select-success select-no-x clickable"
             value={item.id}
             options={options}
             placeholder={this.placeholder}
@@ -118,9 +117,9 @@ export class InputGroup extends Component {
 
   renderCustomInput(item) {
     return (
-      <div className="col-xs-12 col-sm mb-2" key={item.id}>
+      <div key={item.id}>
         <Select
-          className="select-success select-no-x clickable"
+          className={classNames("select-success", "select-no-x", "clickable")}
           value={item.id}
           options={this.getOptions(this.nestedUtils.getRootItems())}
           placeholder={this.placeholder}
