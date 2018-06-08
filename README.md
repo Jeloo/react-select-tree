@@ -1,8 +1,11 @@
+# React select tree
+
 The component helps you to select elements of tree-like data structure step by step, level by level
 
 The repository itself is not moved to separate npm package yet. So it contains source code for the component and several examples inside the main App.js component as well.
 
-Example usage: assume that you are using the marketplace and you are looking for the ads from some specific categories or subcategories.
+## Examples 
+Assume that you are using the marketplace and you are looking for the ads from some specific categories or subcategories.
 
 ```jsx
 <MultipleSelectConsumer initialSelection={[1, 2]}>
@@ -87,3 +90,9 @@ You can pass the specific component to customize rendering of selected items:
   )}
 </MultipleSelectConsumer>
 ```
+
+## How to run
+`yarn start`
+
+## How to run tests
+`yarn test`
