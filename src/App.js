@@ -21,8 +21,8 @@ class App extends Component {
         </p>
 
         <p>
-          Example usage: you are using the marketplace and you are looking for
-          the ads from some specific categories or subcategories.
+          Example usage: assume that you are using the marketplace and you are
+          looking for the ads from some specific categories or subcategories.
         </p>
         <div className={classnames("row")}>
           <MultipleSelectConsumer initialSelection={[1, 2]}>
@@ -40,7 +40,6 @@ class App extends Component {
                   resetBtn: ["Button Button--danger"],
                   buttonsContainer: ["ButtonGroup-container"]
                 }}
-                maxCount={3}
               />
             )}
           </MultipleSelectConsumer>
