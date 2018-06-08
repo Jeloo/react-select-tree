@@ -5,15 +5,6 @@ import ButtonGroup from "./ButtonGroup";
 import PropTypes from "prop-types";
 import MultipleSelectedList from "./MultipleSelectedList";
 
-//@TODO
-// * Refactor from className to classnames - DONE
-// * Use styled components
-// * Get rid of intl - DONE
-// * Get rid of function declarations in the render methods - DONE
-// * Make the example working - DONE
-// * Tests at least for nested utils
-// * Reformat - DONE
-
 /**
  * @property {Array}            data                   The data containing hierarchy of strings to find
  * @property {Array}            selection              Ids of the (initially) selected data

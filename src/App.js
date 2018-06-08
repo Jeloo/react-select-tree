@@ -4,7 +4,6 @@ import "./App.css";
 import MultipleSelectedListNested from "./multistep-select/MultipleSelectedListNested";
 import dummyData from "./data.json";
 import MultistepSelect from "./multistep-select/MultistepSelect";
-
 import classnames from "classnames";
 
 class App extends Component {
