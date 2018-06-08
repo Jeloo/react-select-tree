@@ -44,6 +44,10 @@
   margin: 10px;
 }
 
+.row {
+  margin-bottom: 80px;
+}
+
 .Select-control {
   flex: 1 0 50%;
   text-align: left;
@@ -99,4 +103,10 @@
 
 .Button--danger:hover {
   box-shadow: 0px 10px 10px rgb(99, 26, 6, 0.2);
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }

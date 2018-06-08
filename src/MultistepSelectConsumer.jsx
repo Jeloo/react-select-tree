@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 
 class MultistepSelectConsumer extends Component {
   constructor(props) {
@@ -25,7 +25,8 @@ class MultistepSelectConsumer extends Component {
   render() {
     return this.props.children(
       this.addItem.bind(this),
-      this.removeItem.bind(this)
+      this.removeItem.bind(this),
+      this.state.selection
     );
   }
 }

@@ -4,31 +4,10 @@ import "./App.css";
 import MultipleSelectedListNested from "./multistep-select/MultipleSelectedListNested";
 import dummyData from "./data.json";
 import MultistepSelect from "./multistep-select/MultistepSelect";
+import MultipleSelectConsumer from "./MultistepSelectConsumer";
 import classnames from "classnames";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: dummyData,
-      selection: [1]
-    };
-  }
-
-  addItem(itemId) {
-    this.setState({ selection: [...this.state.selection, ...[itemId]] });
-  }
-
-  removeItem(itemId) {
-    const index = this.state.selection.indexOf(itemId);
-
-    if (index > -1) {
-      const selection = [...this.state.selection];
-      selection.splice(index, 1);
-      this.setState({ selection });
-    }
-  }
-
   render() {
     return (
       <div className="App">
@@ -46,27 +25,95 @@ class App extends Component {
           the ads from some specific categories or subcategories.
         </p>
         <div className={classnames("row")}>
-          <MultistepSelect
-            data={this.state.data}
-            selection={this.state.selection}
-            onConfirm={this.addItem.bind(this)}
-            onRemove={this.removeItem.bind(this)}
-            selectedListComponent={MultipleSelectedListNested}
-            classNamesConfig={{
-              selectContainer: ["App-container"],
-              select: ["App-select"],
-              confirmBtn: ["Button Button--success"],
-              resetBtn: ["Button Button--danger"],
-              buttonsContainer: ["ButtonGroup-container"]
-            }}
-            maxCount={3}
-          />
+          <MultipleSelectConsumer initialSelection={[1, 2]}>
+            {(addItem, removeItem, selection) => (
+              <MultistepSelect
+                data={dummyData}
+                selection={selection}
+                onConfirm={addItem}
+                onRemove={removeItem}
+                selectedListComponent={MultipleSelectedListNested}
+                classNamesConfig={{
+                  selectContainer: ["App-container"],
+                  select: ["App-select"],
+                  confirmBtn: ["Button Button--success"],
+                  resetBtn: ["Button Button--danger"],
+                  buttonsContainer: ["ButtonGroup-container"]
+                }}
+                maxCount={3}
+              />
+            )}
+          </MultipleSelectConsumer>
+        </div>
+
+        <p>
+          It provides ability to limit the selection (limited to 2 items, so you
+          are not able to select anymore):
+        </p>
+
+        <div className={classnames("row")}>
+          <MultipleSelectConsumer initialSelection={[1, 2]}>
+            {(addItem, removeItem, selection) => (
+              <MultistepSelect
+                data={dummyData}
+                selection={selection}
+                onConfirm={addItem}
+                onRemove={removeItem}
+                selectedListComponent={MultipleSelectedListNested}
+                classNamesConfig={{
+                  selectContainer: ["App-container"],
+                  select: ["App-select"],
+                  confirmBtn: ["Button Button--success"],
+                  resetBtn: ["Button Button--danger"],
+                  buttonsContainer: ["ButtonGroup-container"]
+                }}
+                maxCount={2}
+              />
+            )}
+          </MultipleSelectConsumer>
         </div>
 
         <p>
           You can pass the specific component to customize rendering of selected
           items:
         </p>
+
+        <div className={classnames("row")}>
+          <MultipleSelectConsumer initialSelection={[1, 2]}>
+            {(addItem, removeItem, selection) => (
+              <MultistepSelect
+                data={dummyData}
+                selection={selection}
+                onConfirm={addItem}
+                onRemove={removeItem}
+                selectedListComponent={props => {
+                  return (
+                    <ul>
+                      {props.selection.map(item => (
+                        <li key={item.id}>
+                          {item.name}{" "}
+                          <span
+                            style={{ cursor: "pointer" }}
+                            onClick={props.onRemove.bind(null, item.id)}
+                          >
+                            [X]
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  );
+                }}
+                classNamesConfig={{
+                  selectContainer: ["App-container"],
+                  select: ["App-select"],
+                  confirmBtn: ["Button Button--success"],
+                  resetBtn: ["Button Button--danger"],
+                  buttonsContainer: ["ButtonGroup-container"]
+                }}
+              />
+            )}
+          </MultipleSelectConsumer>
+        </div>
       </div>
     );
   }
