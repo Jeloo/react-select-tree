@@ -11,6 +11,10 @@ class MultipleSelectedListNested extends Component {
     return names.join(" \u2023 ");
   }
 
+  onRemove(item) {
+    this.props.onRemove(item);
+  }
+
   render() {
     const items = this.props.nestedUtils.findByIds(this.props.selection);
 
@@ -21,7 +25,7 @@ class MultipleSelectedListNested extends Component {
             <span
               className="Select-value-icon"
               aria-hidden
-              onClick={() => this.props.onRemove(item.id)}
+              onClick={this.onRemove.bind(this, item.id)}
             >
               ×
             </span>

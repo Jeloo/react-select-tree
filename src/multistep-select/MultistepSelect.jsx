@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import MultipleSelectedList from "./MultipleSelectedList";
 
 //@TODO
-// * Refactor from className to classnames
+// * Refactor from className to classnames - DONE
 // * Use styled components
 // * Get rid of intl - DONE
 // * Get rid of function declarations in the render methods

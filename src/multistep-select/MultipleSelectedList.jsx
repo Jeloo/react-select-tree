@@ -3,6 +3,10 @@ import PropTypes from "prop-types";
 import { itemShape } from "./MultistepSelect";
 
 class MultipleSelectedList extends Component {
+  onRemove(item) {
+    this.props.onRemove(item);
+  }
+
   render() {
     const items = this.props.selection;
 
@@ -13,7 +17,7 @@ class MultipleSelectedList extends Component {
             <span
               className="Select-value-icon"
               aria-hidden="true"
-              onClick={() => this.props.onRemove(item)}
+              onClick={this.onRemove.bind(this, item)}
             >
               ×
             </span>

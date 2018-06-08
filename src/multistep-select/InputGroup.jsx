@@ -155,6 +155,10 @@ export class InputGroup extends Component {
     };
   }
 
+  onBlur() {
+    this.setState({ maxLengthError: null });
+  }
+
   renderInputForNewSelection() {
     const itemId = this.props.currentItemId;
 
@@ -179,7 +183,7 @@ export class InputGroup extends Component {
           autoFocus={true}
           newOptionCreator={this.onNewOption}
           autoBlur
-          onBlur={() => this.setState({ maxLengthError: null })}
+          onBlur={this.onBlur.bind(this)}
           autosize={false}
           openOnFocus={!!itemId}
           disabled={this.props.selectionDisabled}

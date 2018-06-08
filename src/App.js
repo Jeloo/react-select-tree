@@ -9,7 +9,6 @@ import MultistepSelect from "./multistep-select/MultistepSelect";
 class App extends Component {
   constructor(props) {
     super(props);
-    // some dummy data for testing purposes
     this.state = {
       data: dummyData,
       selection: [1]
