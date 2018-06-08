@@ -92,7 +92,10 @@ export class MultistepSelect extends Component {
         creatable={this.props.creatable}
         maxCreatableLength={this.props.maxCreatableLength}
         selectionDisabled={this.state.selectionDisabled}
-        selectClassNames={this.props.classNamesConfig.select}
+        selectClassNames={this.props.classNamesConfig.select || []}
+        selectContainerClassNames={
+          this.props.classNamesConfig.selectContainer || []
+        }
       />
     );
   }
@@ -133,6 +136,11 @@ export class MultistepSelect extends Component {
         itemHasChildren={itemHasChildren}
         readyToConfirm={!!item}
         confirmText={confirmText}
+        classNamesButtonsContainer={
+          this.props.classNamesConfig.buttonsContainer
+        }
+        classNamesConfirmBtn={this.props.classNamesConfig.confirmBtn}
+        classNamesResetBtn={this.props.classNamesConfig.resetBtn}
       />
     );
   }
@@ -159,14 +167,6 @@ export class MultistepSelect extends Component {
       </div>
     );
   }
-
-  // componentDidUpdate() {
-  //   if (this.isLimitReached()) {
-  //     this.props.input.onChange(
-  //       this.props.selection.slice(0, this.props.maxCount)
-  //     );
-  //   }
-  // }
 
   isLimitReached() {
     return (

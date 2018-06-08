@@ -23,6 +23,80 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.App-container {
+  display: flex;
+  flex: 1 0 50%;
+  justify-content: center;
+  flex-basis: 20em;
+}
+
+.App-select {
+  flex-grow: 1;
+  display: block;
+  margin: 10px;
+}
+
+.Select-control {
+  flex: 1 0 50%;
+  text-align: left;
+  padding-left: 10px;
+  min-width: 200px;
+}
+
+.Button {
+  margin: 2px;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  outline: 0;
+  display: inline-block;
+  position: relative;
+  padding: 10px 18px;
+  top: 0;
+  font-size: 1.2em;
+  font-family: "Open Sans", Helvetica;
+  border-radius: 4px;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(15, 165, 60, 0.2);
+}
+
+.Button--success {
+  border: 0;
+  border-bottom: 1px solid rgba(28, 227, 125, 0.5);
+  background: rgba(22, 230, 137, 1);
+  color: #fff;
+  box-shadow: 0px 0px 0px rgba(15, 165, 60, 0.1);
+}
+
+.Button--danger {
+  border: 0;
+  border-bottom: 1px solid rgb(99, 26, 6);
+  background: rgb(229, 65, 20);
+  color: #fff;
+  box-shadow: 0px 0px 0px rgb(99, 26, 6, 0.1);
+}
+
+.Button--success:hover {
+  box-shadow: 0px 10px 10px rgba(15, 165, 60, 0.2);
+}
+
+.Button--danger:hover {
+  box-shadow: 0px 10px 10px rgb(99, 26, 6, 0.2);
 }

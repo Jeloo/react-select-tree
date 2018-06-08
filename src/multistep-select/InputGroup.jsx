@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import NestedUtils from "./NestedUtils";
 import Select, { Creatable } from "react-select";
-import classNames from "classnames";
+import classnames from "classnames";
 import "react-select/dist/react-select.css";
 
 /**
@@ -109,6 +109,7 @@ export class InputGroup extends Component {
             options={options}
             placeholder={this.placeholder}
             onChange={this.onSelect.bind(this)}
+            className={classnames(...this.props.selectClassNames)}
           />
         </div>
       );
@@ -119,12 +120,7 @@ export class InputGroup extends Component {
     return (
       <div key={item.id}>
         <Select
-          className={classNames([
-            "select-success",
-            "select-no-x",
-            "clickable",
-            ...this.props.selectClassNames
-          ])}
+          className={classnames(["select-success", "select-no-x", "clickable"])} //@TODO Should be passed within props
           value={item.id}
           options={this.getOptions(this.nestedUtils.getRootItems())}
           placeholder={this.placeholder}
@@ -142,7 +138,7 @@ export class InputGroup extends Component {
     }
 
     return (
-      <div className={classNames("form-control-feedback", "error-block")}>
+      <div className={classnames("form-control-feedback", "error-block")}>
         {this.props.error}
       </div>
     );
@@ -156,7 +152,7 @@ export class InputGroup extends Component {
         custom: true
       },
       label: newOption.label,
-      className: "Select-create-option-placeholder"
+      className: "Select-create-option-placeholder" //@TODO Should be passed within props
     };
   }
 
@@ -178,7 +174,7 @@ export class InputGroup extends Component {
     const SelectComponent = this.props.creatable ? Creatable : Select;
 
     return (
-      <div className={classNames("col-xs-12 col-sm mb-2")}>
+      <div>
         <SelectComponent
           options={options}
           placeholder={this.placeholder}
@@ -192,6 +188,7 @@ export class InputGroup extends Component {
           autosize={false}
           openOnFocus={!!itemId}
           disabled={this.props.selectionDisabled}
+          className={classnames(...this.props.selectClassNames)}
         />
         {this.renderMaxLengthError()}
       </div>
@@ -208,14 +205,17 @@ export class InputGroup extends Component {
 
   render() {
     return (
-      <div className="row">
-        <div className="col">
-          <div className="row">
-            {this.renderInputs()}
-            {this.renderInputForNewSelection()}
-          </div>
-          {this.renderError()}
+      <div>
+        <div
+          className={classnames([
+            "InputGroup",
+            ...this.props.selectContainerClassNames
+          ])}
+        >
+          {this.renderInputs()}
+          {this.renderInputForNewSelection()}
         </div>
+        {this.renderError()}
       </div>
     );
   }

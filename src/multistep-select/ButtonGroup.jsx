@@ -1,28 +1,45 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import classnames from "classnames";
 
 class ButtonGroup extends Component {
   renderConfirmButton() {
-    const { readyToConfirm, confirmText = "Add" } = this.props;
+    const {
+      readyToConfirm,
+      confirmText = "Add",
+      classNamesConfirmBtn
+    } = this.props;
 
     if (!readyToConfirm) {
       return null;
     }
 
     return (
-      <input type="button" value={confirmText} onClick={this.props.onConfirm} />
+      <input
+        type="button"
+        value={confirmText}
+        onClick={this.props.onConfirm}
+        className={classnames(classNamesConfirmBtn)}
+      />
     );
   }
 
   renderResetButton() {
     if (this.props.readyToConfirm) {
-      return <button onClick={this.props.onReset}>Reset</button>;
+      return (
+        <button
+          onClick={this.props.onReset}
+          className={classnames(this.props.classNamesResetBtn)}
+        >
+          Reset
+        </button>
+      );
     }
   }
 
   render() {
     return (
-      <div>
+      <div className={classnames(this.props.classNamesButtonsContainer)}>
         {this.renderConfirmButton()}
         {this.renderResetButton()}
       </div>
